@@ -1,0 +1,122 @@
+# Blender MTL File: 'None'
+# Material Count: 10
+
+newmtl gold_mat
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png1.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg1.PNG
+
+newmtl gold_mat_1
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png2.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg2.PNG
+
+newmtl gold_mat_2
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png3.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg3.PNG
+
+newmtl gold_mat_3
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png4.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg4.PNG
+
+newmtl gold_mat_4
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png5.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg5.PNG
+
+newmtl gold_mat_5
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png6.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg6.PNG
+
+newmtl gold_mat_6
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png7.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg7.PNG
+
+newmtl gold_mat_7
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png8.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg8.PNG
+
+newmtl gold_mat_8
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png9.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg9.PNG
+
+newmtl gold_mat_9
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_normal_png10.PNG
+map_Kd /var/folders/5z/ljltc0kj14nd8w46kn9r2gjw0000gn/T/tmpe1utscf4/0/gold_mat_basecolor_jpg10.PNG
