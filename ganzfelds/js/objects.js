@@ -206,15 +206,15 @@ function createSculpture(objFileURL, mtlFileURL) {
 
     var mtlLoader = new THREE.MTLLoader();
 
-        mtlLoader.setTexturePath('media/');
-        mtlLoader.setPath('media/');
+        mtlLoader.setTexturePath('../js/media/');
+        mtlLoader.setPath('../js/media/');
         mtlLoader.load( 'sculpture_mtl.mtl', function (materials) {
 
             materials.preload();
 
             var objLoader = new THREE.OBJLoader();
             objLoader.setMaterials(materials);
-            objLoader.setPath('media/');
+            objLoader.setPath('../js/media/');
             objLoader.load( 'sculpture_obj.obj', function (object) {
 
                 scene.add(object);
