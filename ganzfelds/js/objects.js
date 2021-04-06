@@ -208,7 +208,7 @@ function createSculpture(objFileURL, mtlFileURL) {
 
         mtlLoader.setTexturePath('/media/');
         mtlLoader.setPath('/media/');
-        mtlLoader.load( sculpture_mtl.mtl, function (materials) {
+        mtlLoader.load( 'sculpture_mtl.mtl', function (materials) {
 
             materials.preload();
 
