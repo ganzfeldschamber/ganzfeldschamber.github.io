@@ -206,7 +206,7 @@ function createSculpture(objFileURL, mtlFileURL) {
 
     var mtlLoader = new THREE.MTLLoader();
 
-        mtlLoader.setTexturePath('/media/');
+        mtlLoader.setTexturePath('./media/');
         mtlLoader.setPath('/media/');
         mtlLoader.load( 'sculpture_mtl.mtl', function (materials) {
 
