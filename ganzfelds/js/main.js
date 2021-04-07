@@ -1,4 +1,4 @@
-var scene, camera, mesh, renderer, cssRenderer, cssScene, cssCamera;
+var scene, camera, mesh, renderer;
 var cube;
 var container;
 
@@ -24,7 +24,7 @@ var animators = [];     // For gif moving images
 
 // Rooms
 var mainRoom = {
-    dimensions: { width: 12, height: 6, depth: 16},
+    dimensions: { width: 10, height: 6, depth: 14},
     walls: { north: null, south: null, west: null, east: null}
 }
 var sculptureRoom = {
@@ -154,10 +154,11 @@ const animation = function () {
     // Sculptures
     if ( podium.pieces.length != 0 ) {
         let sculpture = podium.pieces[podium.index];
-        let rotationSpeed = 0.02, moveSpeed = 0.05;
+        let rotationSpeed = 0.01, moveSpeed = 0.05;
         let timeOnShow = 5000;  // Time in milliseconds
     
-        sculpture.rotation.z -= rotationSpeed;
+        // Rotate sculpture
+        // sculpture.rotation.z -= rotationSpeed;
     
         // Rising
         if ( podium.stage == 1 ) {
@@ -168,12 +169,14 @@ const animation = function () {
         }
         else if ( podium.stage == 2 ) {
             // Delay for x seconds to show
-            if (delays.keyboardWait) {
+            if (delays.sculptureWait) {
                 setTimeout(function() {
-                    podium.stage = 3;
-                    delays.keyboardWait = true;
+                    if ( podium.pieces.length > 1 ) {  // If only 1 piece, then no need to go down
+                        podium.stage = 3;
+                        delays.sculptureWait = true;
+                    }
                 }, timeOnShow);
-                delays.keyboardWait = false;
+                delays.sculptureWait = false;
             }
         }
         else if ( podium.stage == 3 ) {

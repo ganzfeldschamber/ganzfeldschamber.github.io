@@ -14,7 +14,7 @@ const createBox = function (width=1, height=1, depth=1, color=0x00ff00) {
 const createPlane = function (width=10, height=10, widthSeg=10, heightSeg=10, wireframe=false){
     let plane = new THREE.Mesh(
         new THREE.PlaneGeometry(width, height, widthSeg, heightSeg),
-        new THREE.MeshPhongMaterial({ color: 0xffffff, wireframe:wireframe })
+        new THREE.MeshPhongMaterial({ color: 'grey', wireframe:wireframe })
     );
     plane.receiveShadow = true;
     plane.castShadow = true;
@@ -83,6 +83,7 @@ const createCustomPainting = function ( { x=1, y=1, z=1, url=null } ) {
         let height = width/ratio;
         painting.scale.x = width;
         painting.scale.y = height;
+        painting.scale.z = height;
     } );
 
     let painting = new THREE.Mesh(
@@ -201,28 +202,90 @@ const createMovie = function ( src ) {
 }
 
 function createSculpture(objFileURL, mtlFileURL) {
-    console.log(objFileURL);
-    console.log(mtlFileURL);
 
-    var mtlLoader = new THREE.MTLLoader();
+    // model
+    // https://ganzfeldschamber.github.io/ganzfelds/media/
 
-        mtlLoader.setTexturePath('../js/media/');
-        mtlLoader.setPath('../js/media/');
-        mtlLoader.load( 'sculpture_mtl.mtl', function (materials) {
+    const mtlLoader = new THREE.MTLLoader();
+    mtlLoader.load(mtlFileURL, (mtl) => {
+      mtl.preload();
+      const objLoader = new THREE.OBJLoader();
+      objLoader.setMaterials(mtl);
+      objLoader.load(objFileURL, (root) => {
+        // Rescale size  
+        let toScale = 0.1;
+          root.scale.x = toScale;
+          root.scale.y = toScale;
+          root.scale.z = toScale;
 
-            materials.preload();
+        // TODO reset origin point so can rotate on center axis
+        //   root.center();  // Reset mesh position
+        //   root.position.multiplyScalar( -1 );
+        //   root.rotation.x += Math.PI;
+        //   root.position.y += 1;
 
-            var objLoader = new THREE.OBJLoader();
-            objLoader.setMaterials(materials);
-            objLoader.setPath('../js/media/');
-            objLoader.load( 'sculpture_obj.obj', function (object) {
+        //   Add to podium
+          root.position.y -= podium.position.y;
+          root.position.z -= podium.position.z;
+          root.position.z += 2;
+          podium.pieces.push(root);
+          scene.add(root);
+      });
+    });
 
-                scene.add(object);
-                object.position.y += 1;
+    return
 
-            });
+    // var mtlLoader = new THREE.MTLLoader();
+    // mtlLoader.setPath( "https://threejs.org/examples/models/obj/walt/" );
+    // mtlLoader.load( 'WaltHead.mtl', function( materials ) {
+    // // mtlLoader.setPath( "https://threejs.org/examples/models/obj/male02/" );
+    // // mtlLoader.load( 'male02.mtl', function( materials ) {
 
-        });
+    // materials.preload();
+
+    // var objLoader = new THREE.OBJLoader();
+    // objLoader.setMaterials( materials );
+    // objLoader.setPath( "https://threejs.org/examples/models/obj/walt/" );
+    // objLoader.load( 'WaltHead.obj', function ( object ) {
+    // // objLoader.setPath( "https://threejs.org/examples/models/obj/male02/" );
+    // // objLoader.load( 'male02.obj', function ( object ) {
+
+    //     mesh = object;
+    //     // mesh.position.y = -50;
+    //     scene.add( mesh );
+
+    // } );
+
+    // } );
+
+
+    // const objLoader = new OBJLoader();
+    // objLoader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj', (root) => {
+    //   scene.add(root);
+    // });
+
+    // var mtlLoader = new THREE.MTLLoader();
+
+    //     mtlLoader.setTexturePath('../js/media/');
+    //     mtlLoader.setPath('../js/media/');
+    //     mtlLoader.load( 'sculpture_mtl.mtl', function (materials) {
+
+    //         console.log("materials", materials)
+    //         materials.preload();
+
+    //         var objLoader = new THREE.OBJLoader();
+    //         objLoader.setMaterials(materials);
+    //         objLoader.setPath('./js/media/');
+    //         objLoader.load( 'sculpture_obj.obj', function (object) {
+
+    //             console.log("obj", object)
+
+    //             scene.add(object);
+    //             object.position.y += 1;
+
+    //         });
+
+    //     });
 
     // let mtlLoader = new THREE.MTLLoader();
     // mtlLoader.setCrossOrigin("anonymous");
@@ -317,8 +380,8 @@ const createFloor = function ({width=10, height=10, widthSeg=10, heightSeg=10, w
 
 
 
-const createLight = function () {
-    let light = new THREE.PointLight(0xffffff, 1, 25);
+const createLight = function (intensity=1, distance=10) {
+    let light = new THREE.PointLight(0xffffff, intensity, distance);
     
     light.castShadow = true;
     // light.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(50, 1, 1, 5000));

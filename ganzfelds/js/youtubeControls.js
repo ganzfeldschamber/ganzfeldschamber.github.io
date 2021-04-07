@@ -11,7 +11,7 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
             color: 'white',
             loop: 1,
-            // autoplay: 1,
+            autoplay: 1,
             rel: 0,
         },
         events: {
@@ -25,7 +25,7 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
             color: 'white',
             loop: 1,
-            // autoplay: 1,
+            autoplay: 1,
             rel: 0,
         },
         events: {

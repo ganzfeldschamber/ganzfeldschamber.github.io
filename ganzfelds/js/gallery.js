@@ -34,8 +34,8 @@ const addRoom = function () {
 
     // Main Room //
 
-    let wallpaperUrl = "https://raw.githubusercontent.com/lmonteregge/resonation/main/media/background1.jpg";
-    let wallpaperUrl2 = "https://raw.githubusercontent.com/lmonteregge/resonation/main/media/background2.png";
+    let wallpaperUrl = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/background1.jpg";
+    let wallpaperUrl2 = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/background2.png";
 
 
     // Meshfloor
@@ -108,9 +108,6 @@ const addRoom = function () {
 
 const addToGallery = function () {
 
-    // let cube = createBox();
-    // scene.add( cube );
-
     // Left wall
     let img1 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_1C.m4v' );
     leftWall.pieces.push(img1)
@@ -121,18 +118,13 @@ const addToGallery = function () {
     let img3 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_3C.m4v' );
     leftWall.pieces.push(img3)
     
-    
-    // Moving painting
-    // let binMan = createMovingPainting("https://raw.githubusercontent.com/lmonteregge/resonation/main/media/Bin-man-horizontal.png",24)
-    // leftWall.pieces.push(binMan)
-    
-    
     // Right wall
     let img4 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_4C.m4v' );
     rightWall.pieces.push(img4)
-
+    
     let img5 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_5C.m4v' );
     rightWall.pieces.push(img5)
+
     let img6 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_6C.m4v' );
     rightWall.pieces.push(img6)
 
@@ -145,14 +137,17 @@ const addToGallery = function () {
     blankScreen.position.z += (mainRoom.dimensions.depth/2)-0.1;
     blankScreen.rotation.y += Math.PI;
     scene.add(blankScreen);
-
+    
     // Test videos
     // let movie = createMovie( 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' );
     // let movie2 = createMovie( 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' );
     // let testMovie = createMovie( 'https://www.dropbox.com/s/oe9q4mnq0oiz5bs/small.mp4' );
     // let testMovie = createMovie( 'https://drive.google.com/uc?export=download&id=1_0qA7Y546eEc7gkCdGg7hP72GBcIVACo' );
-
-
+    
+    // Moving painting
+    // let binMan = createMovingPainting("https://raw.githubusercontent.com/lmonteregge/resonation/main/media/Bin-man-horizontal.png",24)
+    // leftWall.pieces.push(binMan)
+    
 }
 
 const addToSculptureRoom = function () {
@@ -228,24 +223,23 @@ const addToPodium = function () {
     // Sculpture
     let sculptureOBJ = 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/sculpture_obj.obj';
     let sculptureMTL = 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/sculpture_mtl.mtl';
-    let sculpture1 = createSculpture(sculptureOBJ, sculptureMTL);
-    // scene.add(sculpture1);
+    createSculpture(sculptureOBJ, sculptureMTL);
 
 
-    let box1 = createBox(1,1,1, 'blue');
-    setPodiumPosition(box1)
-    podium.pieces.push(box1);
-    scene.add(box1);
+    // let box1 = createBox(1,1,1, 'blue');
+    // setPodiumPosition(box1)
+    // podium.pieces.push(box1);
+    // scene.add(box1);
     
-    let box2 = createBox(1,1,1, 'green');
-    setPodiumPosition(box2)
-    podium.pieces.push(box2);
-    scene.add(box2);
+    // let box2 = createBox(1,1,1, 'green');
+    // setPodiumPosition(box2)
+    // podium.pieces.push(box2);
+    // scene.add(box2);
     
-    let box3 = createBox(1,1,1, 'red');
-    setPodiumPosition(box3)
-    podium.pieces.push(box3);
-    scene.add(box3);
+    // let box3 = createBox(1,1,1, 'red');
+    // setPodiumPosition(box3)
+    // podium.pieces.push(box3);
+    // scene.add(box3);
 
 
 }
@@ -263,10 +257,15 @@ const addLights = function () {
     scene.add(ambientLight);
     
     // Light
-    ceilingLight = createLight();
+    ceilingLight = createLight(0.8);
     ceilingLight.position.set(0, 3, 0);  // x,y,z
-
-
     scene.add(ceilingLight);
+    
+    // Sculpture room light
+    sculptureLight = createLight(1);
+    sculptureLight.position.set(0, 0, -8);  // x,y,z
+    scene.add(sculptureLight);
+
+
 
 }
