@@ -98,23 +98,23 @@ const update = function () {
     
     }
 
-    // Movement controls
-    if( keyboard.pressed("T") ) {  // W key
-        camera.position.x -= Math.sin(camera.rotation.y) * player.speed;
-        camera.position.z += Math.cos(camera.rotation.y) * player.speed;
-    }
-    if( keyboard.pressed("G") ) {  // S key
-        camera.position.x += Math.sin(camera.rotation.y) * player.speed;
-        camera.position.z -= Math.cos(camera.rotation.y) * player.speed;
-    }
-    if( keyboard.pressed("F") ) {  // A key
-        camera.position.x -= Math.sin(camera.rotation.y - Math.PI/2) * player.speed;
-        camera.position.z -= Math.cos(camera.rotation.y + Math.PI/2) * player.speed;
-    }
-    if( keyboard.pressed("H") ) {  // D key
-        camera.position.x -= Math.sin(camera.rotation.y + Math.PI/2) * player.speed;
-        camera.position.z -= Math.cos(camera.rotation.y - Math.PI/2) * player.speed;
-    }
+    // // Movement controls
+    // if( keyboard.pressed("T") ) {  // W key
+    //     camera.position.x -= Math.sin(camera.rotation.y) * player.speed;
+    //     camera.position.z += Math.cos(camera.rotation.y) * player.speed;
+    // }
+    // if( keyboard.pressed("G") ) {  // S key
+    //     camera.position.x += Math.sin(camera.rotation.y) * player.speed;
+    //     camera.position.z -= Math.cos(camera.rotation.y) * player.speed;
+    // }
+    // if( keyboard.pressed("F") ) {  // A key
+    //     camera.position.x -= Math.sin(camera.rotation.y - Math.PI/2) * player.speed;
+    //     camera.position.z -= Math.cos(camera.rotation.y + Math.PI/2) * player.speed;
+    // }
+    // if( keyboard.pressed("H") ) {  // D key
+    //     camera.position.x -= Math.sin(camera.rotation.y + Math.PI/2) * player.speed;
+    //     camera.position.z -= Math.cos(camera.rotation.y - Math.PI/2) * player.speed;
+    // }
 
     // if( keyboard.pressed("shift") ) {  // Shift key - Float down
     //     // if (camera.position.y > 0.5){
@@ -189,7 +189,6 @@ const update = function () {
         else if ( camera.rotation.x < -Math.PI/2 ) {
             camera.rotation.x += player.turnSpeed;
         }
-        console.log(camera.rotation.x)
     }
 
     // Painting controls
