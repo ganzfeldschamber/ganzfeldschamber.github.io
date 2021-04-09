@@ -206,6 +206,9 @@ function createSculpture(objFileURL, mtlFileURL) {
     // model
     // https://ganzfeldschamber.github.io/ganzfelds/media/
 
+    var sculptureBox = new THREE.Box3();
+    var sculpturePivot = new THREE.Group();
+
     const mtlLoader = new THREE.MTLLoader();
     mtlLoader.load(mtlFileURL, (mtl) => {
       mtl.preload();
@@ -218,18 +221,23 @@ function createSculpture(objFileURL, mtlFileURL) {
           root.scale.y = toScale;
           root.scale.z = toScale;
 
-        // TODO reset origin point so can rotate on center axis
-        //   root.center();  // Reset mesh position
-        //   root.position.multiplyScalar( -1 );
-        //   root.rotation.x += Math.PI;
-        //   root.position.y += 1;
-
-        //   Add to podium
-          root.position.y -= podium.position.y;
-          root.position.z -= podium.position.z;
-          root.position.z += 2;
-          podium.pieces.push(root);
-          scene.add(root);
+          
+          //   Add to podium position
+        //   sculpturePivot.rotation.x += Math.PI/2;
+        sculpturePivot.position.y -= podium.position.y;
+        sculpturePivot.position.z -= podium.position.z;
+        sculpturePivot.position.z += 2;
+        
+        //   Create pivot box
+        sculptureBox.setFromObject(root);
+        sculptureBox.center( root.position );
+        root.position.multiplyScalar( -1 );
+          
+        //   Add to scene
+          scene.add( sculpturePivot );
+          sculpturePivot.add( root );
+        //   To podium
+          podium.pieces.push(sculpturePivot);
       });
     });
 

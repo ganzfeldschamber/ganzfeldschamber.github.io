@@ -152,23 +152,23 @@ const addToGallery = function () {
 
 const addToSculptureRoom = function () {
 
-    // Instructions on top
-    let qrInstructions = createCustomPainting( {x:2, y:2, z:0.2, url:'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/instructions.PNG'} )
-    qrInstructions.rotation.x += Math.PI/2
-    qrInstructions.position.set(0,-podium.position.y,-podium.position.z+6);
-    scene.add(qrInstructions);
+    // // Instructions on top
+    // let qrInstructions = createCustomPainting( {x:2, y:2, z:0.2, url:'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/instructions.PNG'} )
+    // qrInstructions.rotation.x += Math.PI/2
+    // qrInstructions.position.set(0,-podium.position.y,-podium.position.z+6);
+    // scene.add(qrInstructions);
 
-    // QR left
-    let qrCode1 = createPainting( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/a_QR_Code.png' )
-    qrCode1.rotation.x += Math.PI/2
-    qrCode1.position.set(4,-podium.position.y,-podium.position.z+3);
-    scene.add(qrCode1);
+    // // QR left
+    // let qrCode1 = createPainting( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/a_QR_Code.png' )
+    // qrCode1.rotation.x += Math.PI/2
+    // qrCode1.position.set(4,-podium.position.y,-podium.position.z+3);
+    // scene.add(qrCode1);
 
-    // QR right
-    let qrCode2 = createPainting( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/i_QR_Code.png' )
-    qrCode2.rotation.x += Math.PI/2
-    qrCode2.position.set(-4,-podium.position.y,-podium.position.z+3);
-    scene.add(qrCode2);
+    // // QR right
+    // let qrCode2 = createPainting( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/i_QR_Code.png' )
+    // qrCode2.rotation.x += Math.PI/2
+    // qrCode2.position.set(-4,-podium.position.y,-podium.position.z+3);
+    // scene.add(qrCode2);
     
 
 
@@ -224,6 +224,7 @@ const addToPodium = function () {
     let sculptureOBJ = 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/sculpture_obj.obj';
     let sculptureMTL = 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/sculpture_mtl.mtl';
     createSculpture(sculptureOBJ, sculptureMTL);
+
 
 
     // let box1 = createBox(1,1,1, 'blue');

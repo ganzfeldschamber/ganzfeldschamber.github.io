@@ -28,7 +28,7 @@ var mainRoom = {
     walls: { north: null, south: null, west: null, east: null}
 }
 var sculptureRoom = {
-    dimensions: { width: mainRoom.dimensions.width, height: mainRoom.dimensions.depth/2, depth: mainRoom.dimensions.height},
+    dimensions: { width: mainRoom.dimensions.width, height: mainRoom.dimensions.depth/3, depth: mainRoom.dimensions.height},  //mainRoom.dimensions.depth/2
     walls: { north: null, south: null, west: null, east: null}
 }
 
@@ -55,8 +55,8 @@ var podium = {
     stage: 1,
     position: {
         x: 0,
-        y: (sculptureRoom.dimensions.height/2) + player.height,
-        z: (mainRoom.dimensions.depth/2) + player.height/2
+        y: (sculptureRoom.dimensions.height/2),
+        z: (mainRoom.dimensions.depth/2)
     }
 
 }
@@ -154,11 +154,11 @@ const animation = function () {
     // Sculptures
     if ( podium.pieces.length != 0 ) {
         let sculpture = podium.pieces[podium.index];
-        let rotationSpeed = 0.01, moveSpeed = 0.05;
+        let rotationSpeed = 0.005, moveSpeed = 0.05;
         let timeOnShow = 5000;  // Time in milliseconds
     
         // Rotate sculpture
-        // sculpture.rotation.z -= rotationSpeed;
+        sculpture.rotation.z -= rotationSpeed;
     
         // Rising
         if ( podium.stage == 1 ) {
