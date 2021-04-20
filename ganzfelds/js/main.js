@@ -9,10 +9,12 @@ var gameSize = { height: window.innerHeight, width: window.innerWidth };
 var keyboard = new THREEx.KeyboardState();
 // var keyboard = {};
 var player = { height: 2, speed: 0.3, turnSpeed: Math.PI*0.01 };
+var cameraDirection = "left";
 
 var youtubeVideo;
 var videos = [];
 var currentVideoIndex = 0;
+var currentVideoPiece;
 
 var delays = { keyboardWait: true, sculptureWait: true};
 var keyboardWaitDelay = true
@@ -33,11 +35,13 @@ var sculptureRoom = {
 }
 
 var leftWall = {
+    name: "left",
     pieces: [], 
     position: {x: mainRoom.dimensions.width/2},
     dims: {length: mainRoom.dimensions.depth}
 };
 var rightWall = {
+    name: "right",
     pieces: [], 
     position: {x: -mainRoom.dimensions.width/2},
     dims: {length: mainRoom.dimensions.depth}
@@ -138,6 +142,11 @@ const render = function () {
     // Renderer
     renderer.render( scene, camera );
 
+    // Update camera direction
+    updateCameraDirection();
+    // Update painting that's within viewing angle
+    updateCurrentPieceViewing()
+
 
 }
 
@@ -149,6 +158,7 @@ const animation = function () {
         let annie = animators[i];
         annie.update(1000 * delta);
     }
+
     
     
     // Sculptures
@@ -200,23 +210,27 @@ const animation = function () {
     // Update text showing id of selected video
     if (videos.length != 0) {
         // document.getElementById('selectedVidId').textContent = currentVideoIndex+1;
-        // document.getElementById('selectedVidPlaying').textContent = videos[currentVideoIndex].video.paused ? '(Paused)' : '(Playing)'; 
-        // document.getElementById('selectedVidMuted').textContent = videos[currentVideoIndex].video.muted ? '(Muted)' : '(Sound on)'; 
-    
+        // document.getElementById('selectedVidPlaying').textContent = videos[currentVideoIndex].video.paused ? '(Paused)' : '(Playing)';
+        // document.getElementById('selectedVidMuted').textContent = videos[currentVideoIndex].video.muted ? '(Muted)' : '(Sound on)';
         // Videos
         for (let i = 0; i < videos.length; i++) {
-            var video = videos[i].video;
-            var videoImageContext = videos[i].imageContext;
-            var videoTexture = videos[i].texture;
-            var videoWidth = videos[i].width;
-            var videoHeight = videos[i].height;
-    
-            if ( video.readyState === video.HAVE_ENOUGH_DATA ) 
-            {
-                videoImageContext.drawImage( video, 0, 0, videoWidth, videoHeight );
-                if ( videoTexture ) 
-                videoTexture.needsUpdate = true;
+            
+            // Only play video that is being looked at
+            if ( videos[i].id == currentVideoPiece ) {
+                var video = videos[i].video;
+                var videoImageContext = videos[i].imageContext;
+                var videoTexture = videos[i].texture;
+                var videoWidth = videos[i].width;
+                var videoHeight = videos[i].height;
+        
+                if ( video.readyState === video.HAVE_ENOUGH_DATA ) 
+                {
+                    videoImageContext.drawImage( video, 0, 0, videoWidth, videoHeight );
+                    if ( videoTexture ) 
+                    videoTexture.needsUpdate = true;
+                }
             }
+
         }
     }
 
@@ -231,7 +245,6 @@ const movingWallPieces = function (wall, forward=true) {
         if (wall.pieces.length != 0) {
             for (let i = 0; i < wall.pieces.length; i++) {
                 let piece = wall.pieces[i];
-                // console.log(piece.position.z)
                 piece.position.z -= moveSpeed;
     
                 // Reset position if past back wall
@@ -244,6 +257,35 @@ const movingWallPieces = function (wall, forward=true) {
                 }
             }
         }
+}
+
+const updateCurrentPieceViewing = () => {
+    // Consts
+    const fromBackWall = -6; 
+    const toFront = -2; 
+
+    // Get current wall
+    let currentWall = leftWall;
+    if ( cameraDirection == "right" ) {
+        currentWall = rightWall;
+    } 
+    
+    // If position in between viewing angle and camera facing wall
+    for (let i = 0; i < currentWall.pieces.length; i++) {
+        let piece = currentWall.pieces[i];
+        if (piece.position.z > fromBackWall && piece.position.z < toFront ) {
+            currentVideoPiece = piece.uuid;               
+        }
+    }
+}
+
+const updateCameraDirection = () => {
+    if ( camera.rotation.y < 0 ) {
+        cameraDirection = "left";
+    }
+    else {
+        cameraDirection = "right";
+    }
 }
 
 

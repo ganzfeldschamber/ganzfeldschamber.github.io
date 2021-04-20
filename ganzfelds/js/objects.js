@@ -99,7 +99,6 @@ const createCustomPainting = function ( { x=1, y=1, z=1, url=null } ) {
 }
 
 const createMovingPainting = function (url="https://raw.githubusercontent.com/stemkoski/stemkoski.github.com/master/Three.js/images/run.png", frames=10, duration=100) {
-    console.log(url)
 
     let runnerGeometry = new THREE.BoxGeometry(1, 1, 0.2);
     let textureLoader = new THREE.TextureLoader();
@@ -158,13 +157,22 @@ const createMovie = function ( src ) {
         videoImage.width = w*100;
         videoImage.height = h*100;
 
-        videoImageContext.fillRect(5, 5, videoImage.width, videoImage.height)
+        videoImageContext.fillRect(0, 0, videoImage.width, videoImage.height)
 
         movieScreen.scale.x = w;
         movieScreen.scale.y = h;
 
         v.width = videoImage.width;
         v.height = videoImage.height;
+
+        // Draw initial image when loaded
+        video.addEventListener("loadeddata", ev2 => {
+            if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
+                videoImageContext.drawImage( video, 0, 0, videoImage.width, videoImage.height );
+                if ( videoTexture )
+                videoTexture.needsUpdate = true;
+            }
+        }, false);
 
     }, false);
 
@@ -189,6 +197,7 @@ const createMovie = function ( src ) {
     
     // Custom Video object for attributes
     let v = {
+        id: movieScreen.uuid,
         video: video, 
         imageContext: videoImageContext, 
         texture: videoTexture,
@@ -196,6 +205,9 @@ const createMovie = function ( src ) {
         height: 1
     }
     videos.push(v);
+
+
+
 
     return movieScreen;
 
@@ -242,98 +254,6 @@ function createSculpture(objFileURL, mtlFileURL) {
     });
 
     return
-
-    // var mtlLoader = new THREE.MTLLoader();
-    // mtlLoader.setPath( "https://threejs.org/examples/models/obj/walt/" );
-    // mtlLoader.load( 'WaltHead.mtl', function( materials ) {
-    // // mtlLoader.setPath( "https://threejs.org/examples/models/obj/male02/" );
-    // // mtlLoader.load( 'male02.mtl', function( materials ) {
-
-    // materials.preload();
-
-    // var objLoader = new THREE.OBJLoader();
-    // objLoader.setMaterials( materials );
-    // objLoader.setPath( "https://threejs.org/examples/models/obj/walt/" );
-    // objLoader.load( 'WaltHead.obj', function ( object ) {
-    // // objLoader.setPath( "https://threejs.org/examples/models/obj/male02/" );
-    // // objLoader.load( 'male02.obj', function ( object ) {
-
-    //     mesh = object;
-    //     // mesh.position.y = -50;
-    //     scene.add( mesh );
-
-    // } );
-
-    // } );
-
-
-    // const objLoader = new OBJLoader();
-    // objLoader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj', (root) => {
-    //   scene.add(root);
-    // });
-
-    // var mtlLoader = new THREE.MTLLoader();
-
-    //     mtlLoader.setTexturePath('../js/media/');
-    //     mtlLoader.setPath('../js/media/');
-    //     mtlLoader.load( 'sculpture_mtl.mtl', function (materials) {
-
-    //         console.log("materials", materials)
-    //         materials.preload();
-
-    //         var objLoader = new THREE.OBJLoader();
-    //         objLoader.setMaterials(materials);
-    //         objLoader.setPath('./js/media/');
-    //         objLoader.load( 'sculpture_obj.obj', function (object) {
-
-    //             console.log("obj", object)
-
-    //             scene.add(object);
-    //             object.position.y += 1;
-
-    //         });
-
-    //     });
-
-    // let mtlLoader = new THREE.MTLLoader();
-    // mtlLoader.setCrossOrigin("anonymous");
-    // mtlLoader.load( mtlFileURL, function( materials ) {
-        
-    //     materials.preload();
-    //     let objLoader = new THREE.OBJLoader();
-    //     objLoader.setCrossOrigin("anonymous");
-    //     objLoader.setMaterials(materials);
-
-    //     objLoader.load( objFileURL, function( mesh ) {
-    //         scene.add(mesh);
-    //     })
-    // });
-    
-
-    // const sculpture = new THREE.LoadingManager();
-    // sculpture.addHandler( /\.dds$/i, new DDSLoader() );
-
-    // let sculpture1 = new MTLLoader( sculpture )
-    // // .setPath( 'media/' )
-    // .setPath( '../media/' )
-    // .load( 'sculpture_mtl.mtl', function ( materials ) {
-
-    //     materials.preload();
-
-    //     new OBJLoader( sculpture )
-    //         .setMaterials( materials )
-    //         // .setPath( 'media/' )
-    //         .setPath( '../media/' )
-    //         .load( 'sculpture_obj.obj', function ( object ) {
-
-    //             object.position.y = - 95;
-    //             scene.add( object );
-
-    //         }, onProgress, onError );
-
-    // } );
-
-    // return sculpture1
 }
  
 

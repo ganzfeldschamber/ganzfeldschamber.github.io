@@ -35,37 +35,41 @@ const addRoom = function () {
     // Main Room //
 
     let wallpaperUrl = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/background1.jpg";
+    let wallpaperUrlRotated = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/background1_rotated.jpg";
     let wallpaperUrl2 = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/background2.png";
 
+    let wallpaperFloor = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Floor.jpg";
+    let wallpaperRoof = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Roof.png";
+    let wallpaperWalls = "https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Walls.jpg";
 
     // Meshfloor
-    let mainFloor = createFloor({width: mainRoom.dimensions.width, height: mainRoom.dimensions.depth-sculptureRoom.dimensions.depth, wallpaperUrl: wallpaperUrl});
+    let mainFloor = createFloor({width: mainRoom.dimensions.width, height: mainRoom.dimensions.depth-sculptureRoom.dimensions.depth, wallpaperUrl: wallpaperFloor});
     // meshFloor.receiveShadow = true;
     mainFloor.position.z += sculptureRoom.dimensions.depth/2;
     scene.add( mainFloor );
 
     // Mesh ceiling
-    let mainCeiling = createFloor({width: mainRoom.dimensions.width, height: mainRoom.dimensions.depth, wallpaperUrl: wallpaperUrl});
+    let mainCeiling = createFloor({width: mainRoom.dimensions.width, height: mainRoom.dimensions.depth, wallpaperUrl: wallpaperRoof});
     mainCeiling.rotation.x += Math.PI;
     mainCeiling.position.y += mainRoom.dimensions.height;
     scene.add( mainCeiling );
     
     // North wall - Front)
-    let mainNorthWall = createWall({width: mainRoom.dimensions.width, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperUrl});
+    let mainNorthWall = createWall({width: mainRoom.dimensions.width, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperWalls});
     mainNorthWall.rotation.y -= Math.PI;
     mainNorthWall.position.z += mainRoom.dimensions.depth/2;
     scene.add( mainNorthWall );
     // South wall - Back)
-    let mainSouthWall = createWall({width: mainRoom.dimensions.width, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperUrl});
+    let mainSouthWall = createWall({width: mainRoom.dimensions.width, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperWalls});
     mainSouthWall.position.z -= mainRoom.dimensions.depth/2;
     scene.add( mainSouthWall );
     // West wall - Left)
-    let mainWestWall = createWall({width: mainRoom.dimensions.depth, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperUrl});
+    let mainWestWall = createWall({width: mainRoom.dimensions.depth, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperWalls});
     mainWestWall.rotation.y -= Math.PI/2;
     mainWestWall.position.x += mainRoom.dimensions.width/2;
     scene.add( mainWestWall );
     // East wall - Right)
-    let mainEastWall = createWall({width: mainRoom.dimensions.depth, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperUrl});
+    let mainEastWall = createWall({width: mainRoom.dimensions.depth, height: mainRoom.dimensions.height, wallpaperUrl: wallpaperWalls});
     mainEastWall.rotation.y += Math.PI/2;
     mainEastWall.position.x -= mainRoom.dimensions.width/2;
     scene.add( mainEastWall );
@@ -109,24 +113,33 @@ const addRoom = function () {
 const addToGallery = function () {
 
     // Left wall
-    let img1 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_1C.m4v' );
+    let img1 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_1.mp4' );
     leftWall.pieces.push(img1)
 
-    let img2 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_2C.m4v' );
+    let img2 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_2.mp4' );
     leftWall.pieces.push(img2)
 
-    let img3 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_3C.m4v' );
+    let img3 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/VIdeo_3.mp4' );
     leftWall.pieces.push(img3)
     
+    let img4 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_4.mp4' );
+    leftWall.pieces.push(img4)
+
     // Right wall
-    let img4 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_4C.m4v' );
-    rightWall.pieces.push(img4)
     
-    let img5 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_5C.m4v' );
+    let img5 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_5.mp4' );
     rightWall.pieces.push(img5)
 
-    let img6 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Image_6C.m4v' );
+    let img6 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_6.mp4' );
     rightWall.pieces.push(img6)
+
+    let img7 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_7.mp4' );
+    rightWall.pieces.push(img7)
+    
+    let img8 = createMovie( 'https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/ganzfelds/media/Video_8.mp4' );
+    rightWall.pieces.push(img8)
+
+    // Image_6C.m4v
 
     
     // Centre wall (Movie)
@@ -175,7 +188,7 @@ const addToSculptureRoom = function () {
 }
 
 const positionGalleryPieces = function () {
-    const widthBetweenPieces = 5;
+    const widthBetweenPieces = 4;
     // Left wall
     for (let i = 0; i < leftWall.pieces.length; i++) {
         let piece = leftWall.pieces[i];
