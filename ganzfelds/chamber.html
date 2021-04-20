@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Ganzfeld's Chamber</title>
+		<title>Ganzfeld</title>
 
 		<link rel="stylesheet" href="css/styles.css">
 
@@ -38,16 +38,16 @@
 			<div id="header">
 				<div style="min-width: 200px;">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infoModal" id="info-btn">
+					<button type="button" class="btn btn-light" data-toggle="modal" data-target="#infoModal" id="info-btn">
 						Info
 					</button>
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#controlsModal" id="control-info-btn">
+					<button type="button" class="btn btn-light" data-toggle="modal" data-target="#controlsModal" id="control-info-btn">
 						Controls
 					</button>
 				</div>
 
-				<h1 id="title">Ganzfeld's Chamber</h1>
+				<!-- <h1 id="title">Ganzfeld's Chamber</h1> -->
 
 				<div style="min-width: 200px;">
 					<h4>Zoom: <span id="zoom-content">0</span></h4>
@@ -63,18 +63,10 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-					<h5 class="modal-title" id="infoModalLongTitle">Info</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					</div>
-					<div class="modal-body">
-						<h2>Information here</h2>
-						<p>This is really cool!</p>
-						<a href="../index">Back to website.</a>
+						<h5 class="modal-title" id="infoModalLongTitle"><a href="../index">Back to website.</a></h5>
 					</div>
 					<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
 					</div>
 				</div>
@@ -86,10 +78,10 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-					<h5 class="modal-title" id="controlsModalLongTitle">Controls</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+						<h5 class="modal-title" id="controlsModalLongTitle">Controls</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
 					<div class="modal-body">
 						<div id="instructions">
@@ -138,8 +130,10 @@
 			</div>
 
 			<div id="youtube-container" class="container">
-				<div id="video-placeholder"></div>
-				<div id="video-placeholder2"></div>
+				<div id="youtube-container-container" class="container">
+					<div id="video-placeholder"></div>
+					<div id="video-placeholder2"></div>
+				</div>
 
 				<script src="https://www.youtube.com/iframe_api"></script>
 			</div>
@@ -152,6 +146,9 @@
 
 			const main = () => {
 
+				// Click controls button
+				document.getElementById('control-info-btn').click();
+
 			}
 
 			main();
@@ -163,13 +160,13 @@
 		<script src="js/main.js"></script>
 
 		<!-- Footer -->
-		<footer>
+		<!-- <footer>
 			<div id="footer">
 				<h5><a href="#">1</a></h5>
 				<h4><a href="#">2</a></h4>
 				<h5><a href="#">Source</a></h5>
 			</div>
-		</footer>
+		</footer> -->
 
 	</body>
 </html>
