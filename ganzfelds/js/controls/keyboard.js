@@ -163,6 +163,7 @@ const update = function () {
         else if (camera.rotation.y > -1.5) {  // Move sideways with limit 90 degress
             camera.rotation.y -= player.turnSpeed;
         }
+        
     }
     if( keyboard.pressed("right") ) {  // Right arrow key
         if (camera.rotation.x > -Math.PI) {  // Rotate back up before sideways
@@ -181,12 +182,12 @@ const update = function () {
     if( keyboard.pressed("down") ) {  // Down arrow key
         // Tilt down
         if ( camera.rotation.y < -0.05 ) {
-            camera.rotation.y += player.turnSpeed;
+            camera.rotation.y += player.turnSpeed;  // Going right first
         }
         else if ( camera.rotation.y > 0.05 ) {
-            camera.rotation.y -= player.turnSpeed;
+            camera.rotation.y -= player.turnSpeed;  // Going left first
         }
-        else if ( camera.rotation.x < -Math.PI/2 ) {
+        else if ( camera.rotation.x < -Math.PI/2 ) {  // Going down now
             camera.rotation.x += player.turnSpeed;
         }
     }
