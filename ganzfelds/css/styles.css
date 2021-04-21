@@ -1,4 +1,6 @@
-body { margin: 0; }
+body { 
+    margin: 0;
+}
 #main { display: flex; flex-direction: column; align-items: center; }
 
 #instructions { display: flex; justify-content: center;  }
@@ -27,6 +29,16 @@ body { margin: 0; }
     /* background-color: grey; */
 }
 
+#background-overlay {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: block;
+    position: fixed;
+    z-index: -1;
+
+}
+
 #info-btn {
     position: fixed;
     top: 5px;
@@ -44,12 +56,19 @@ body { margin: 0; }
 }
 
 #youtube-container {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    margin: 0px;
+    padding: 0px;
+}
+#youtube-container-container {
     position: absolute;
-    top: 45%;
-    left: 50%;
+    /* top: 45%;
+    left: 50%; */
 }
 .container{
-padding: 5px;
+/* padding: 5px; */
 display: flex;
 justify-content: center;
 align-items: center;
