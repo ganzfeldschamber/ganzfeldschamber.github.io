@@ -147,7 +147,7 @@
                 return output;
                 };
 
-            var currentNumber = 6;
+            var currentNumber = 7;
             var maxNum = 7, minNum = 1;
 
             var randomNumber = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
@@ -157,7 +157,7 @@
                 randomNumber--;
             }
             if (randomNumber2 == currentNumber) {
-                randomNumber2++;
+                randomNumber2 = 1;
             }
 
             const main = () => {
@@ -165,7 +165,7 @@
 
                 document.getElementById('left').href = randomNumber;
                 document.getElementById('right').href = randomNumber2;
-                
+
 
                 console.log(randomNumberCipher);
 
