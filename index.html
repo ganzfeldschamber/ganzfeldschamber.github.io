@@ -28,9 +28,7 @@
 				<p>
 					Ganzfelds Chamber is a collaborative art project which explores sound and representation through a scope of media, presented in a unique digital space. In its early stages, the work developed like an exquisite corpse; our responses had been driven by the unique and telling sounds produced by Jesse Hitchman as well as the lucid documentation of these sounds through spectrograms produced by Huda Caglayan. These elicited such concepts as the fever dream, resonance, image noise and the artefact. Each artist had to dive deep into their practice - having never considered such circumstances like the COVID-19 pandemic - and pull meaning from the sounds of our private lives.
 				</p>
-				<p>
-					Collaboration has adopted new methods in these trying times. The group met online fortnightly to discuss the work we had been making and to aid each other to push for new frontiers within abstraction. We are proud to present this corner of the internet – a sound wholly in and of itself.
-				</p>
+
 				<h3>
 					PLEASE BE ADVISED the program will begin muted. PRESS ‘M’ TO UNMUTE.
 				</h3>
@@ -38,7 +36,7 @@
 					WARNING: FLASHING IMAGES.
 				</h3>
 
-				<h3><a href="ganzfelds/chamber">Click here to go to Ganzfeld chamber</a></h3>
+				<h3><a href="ganzfelds/chamber">Enter Ganzfeld's chamber</a></h3>
 
 			</div>
 
@@ -52,7 +50,30 @@
 						
 
 
-			<h3><a href="ganzfelds/caesar">Click here to go to Ganzfeld Cipher</a></h3>
+			<h3><a href="lostandfound/1" id="lostandfound-link">Lost and found</a></h3>
+
+
+
+			<h5>
+				<p>GANZFELDS CHAMBER</p>
+
+					PERFORMANCE BY JOE ADAMS
+				<br>
+					VIDEO FOOTAGE BY TEX SANTOS-SHAW
+				<br>
+					SOUND BY JESSE HITCHMAN
+				<br>
+					VISUALISER, ANIMATION BY HUDA CAGLAYAN
+				<p>
+					FEATURING…
+				</p>
+				
+					PHOTOGRAPHS TAKEN BY LUCA MONTEREGGE
+				<br>
+					SCULPTURE CREATED BY EMI ROSALINA KUBOTA
+
+				<p>PROGRAMMING & CODING BY JEREMY TANG</p>
+			</h5>
 
 
 
@@ -68,6 +89,29 @@
 				<h5><a href="#">Created</a></h5>
 			</div>
 		</footer> -->
+
+		<script>
+			var maxNum = 7, minNum = 1;
+
+            var randomNumber = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+
+           
+
+
+            const main = () => {
+                // console.log("Start");
+
+                console.log(randomNumber);
+
+                document.getElementById('lostandfound-link').href = "lostandfound/"+randomNumber;
+
+                                
+                // console.log("End");
+            }
+
+
+            main();
+        </script>
 
 	</body>
 </html>
