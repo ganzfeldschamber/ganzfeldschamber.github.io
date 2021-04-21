@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Caesar</title>
+		<style>
+            #header {
+                text-align: center;
+            }
+            .container {
+                display: flex;
+                align-items: center;
+                margin: 10px;
+            }
+            #submittedCipherIndex {
+                width: 60px;
+            }
+
+            #footer { height: 50px; width: 95%; display: flex; justify-content: space-between; position: fixed; left: 0; bottom: 0; padding: 15px;}
+
+        </style>
+
+	</head>
+	<body>
+
+		<div id="main">
+            <div id="header">
+                <!-- <h1>Ganzfeld's Cipher</h1> -->
+                <p></p>
+            </div> 
+
+            <div>
+
+                <div id="plaintext">
+                    
+                </div>
+
+                <br>
+
+                <div id="cipherOutput">
+
+                </div>
+
+                <!-- <h4>End of text</h4> -->
+
+                <div class="container">
+                    <label for="index">Index:</label>
+                    <input type="number" id="submittedCipherIndex" name="index" step="1" value="0">
+                    <input type="submit" value="DECRYPT" onclick="updateCipher()">
+
+                </div>
+
+            </div>
+
+        <!-- Footer -->
+        <footer>
+            <div id="footer">               
+                <h3><a href="#" id="left">&#171; Lost</a></h3>
+                <h5><a href="https://ganzfeldschamber.github.io/">and</a></h5>
+                <h5><a href="#" id="right">Found &#187;</a></h5>
+            </div>
+        </footer>
+
+        </div>
+
+		<script>
+            var originalText = `Each time I’d walk in, I would throw my voice and wait for it to return.
+                    
+                    This occasion I couldn’t turn away. In here, the answers for my questions had been imbued within its existence: Why was I fired from the firm? Where did that singing come from? What had tied my life inextricably to the production of Milk? As far I knew, these matters had been completely unrelated until I was brought to the attention of this room.
+                    
+                    I gradually came to recognise that in here, these subjects had no unique qualities. I couldn’t ask these questions individually rather they shared the same answer. I had a sudden sinking feeling – one that became physical, like I had started the long descent to bottom of the ocean. I continued down the hallway although there was no end in sight. At some point I stopped and questioned, does such a room exist? It must end, it has to end. My feet were steady against the tiled floor, I pressed on into complete darkness.
+                    
+                    What must have been thirty minutes since I had entered – I must’ve either fell unconscious or experienced what I could only imagine is dying. Both legs seized and I was unable to walk. I started experiencing visions – or colours, at first there were many and in quick succession. I began retching as I induced what a seizure might feel like. The retching caused my stomach to twist, and I quickly fell to the wall of the room. There was no doubt what I was experiencing was real, maybe the first real feeling I had had for a long time. The colours began to ease into one another and as I concentrated on them a sequence began playing out. Whilst I couldn’t recall the sequence as colours, I remember exactly what it sounded like.`;
+
+            var randomNumberCipher = Math.floor(Math.random() * (26 - 1 + 1)) + 1;
+
+            
+            const updateCipher = () => {
+
+                // Get shift index
+                let n = document.getElementById('submittedCipherIndex').value;
+
+                // Convert string to integer
+                n = parseInt(n, 10);
+                // Default 0 if not integer
+                if (isNaN(n)) {
+                    n = 0;
+                }
+                n = n + randomNumberCipher;
+
+                // Get text content
+                // let text = document.getElementById('plaintext').textContent.trim().replace(/\s+/g,' ');
+                let text = originalText.trim().replace(/\s+/g,' ');
+
+                // Do a Caesar shift
+                let newText = caesarShift(text, n);
+
+                // Update text content
+                document.getElementById('cipherOutput').textContent = newText;
+                // document.getElementById('plaintext').textContent = newText;
+                // TODO: Start off with ciphered text. Decipher text to get original.
+            }
+
+            // JavaScript Caesar shift
+            // by Evan Hahn (https://gist.github.com/EvanHahn/2587465)
+            const caesarShift = function (str, amount) {
+                if (amount == 0) {
+                    return str;
+                }
+                // Wrap the amount
+                if (amount < 0) {
+                    return caesarShift(str, amount + 26);
+                }
+                else if (amount > 26) {
+                    return caesarShift(str, amount - 26);
+                }
+
+                // Make an output variable
+                var output = "";
+
+                // Go through each character
+                for (var i = 0; i < str.length; i++) {
+                    // Get the character we'll be appending
+                    var c = str[i];
+
+                    // If it's a letter...
+                    if (c.match(/[a-z]/i)) {
+                    // Get its code
+                    var code = str.charCodeAt(i);
+
+                    // Uppercase letters
+                    if (code >= 65 && code <= 90) {
+                        c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
+                    }
+
+                    // Lowercase letters
+                    else if (code >= 97 && code <= 122) {
+                        c = String.fromCharCode(((code - 97 + amount) % 26) + 97);
+                    }
+                    }
+
+                    // Append
+                    output += c;
+                }
+
+                // All done!
+                return output;
+                };
+
+            var currentNumber = 6;
+            var maxNum = 7, minNum = 1;
+
+            var randomNumber = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+            var randomNumber2 = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+
+            if (randomNumber == currentNumber) {
+                randomNumber--;
+            }
+            if (randomNumber2 == currentNumber) {
+                randomNumber2++;
+            }
+
+            const main = () => {
+                // console.log("Start");
+
+                document.getElementById('left').href = randomNumber;
+                document.getElementById('right').href = randomNumber2;
+                
+
+                console.log(randomNumberCipher);
+
+                // Get text
+                let text = originalText.trim().replace(/\s+/g,' ');
+
+                // Do a Caesar shift
+                let newText = caesarShift(text, randomNumberCipher);
+
+                // Update text content
+                document.getElementById('cipherOutput').textContent = newText;
+
+
+                                
+                // console.log("End");
+            }
+
+
+            main();
+        </script>
+	</body>
+</html>

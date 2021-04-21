@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ganzfeld Chamber</title>
+		
+		<style>
+			body { margin: 0; }
+			#main { display: flex; flex-direction: column; align-items: center; }
+			#footer { height: 50px; width: 95%; display: flex; justify-content: space-between; position: fixed; left: 0; bottom: 0; padding: 15px;}
+
+
+			.image-container {
+				display: block;
+				position: absolute;
+			}
+			img {
+				width: 100%;
+				max-width: 1920px;
+
+				height: 100%;
+				max-height: 1080px;
+			}
+
+			.audio-container {
+				display: flex;
+				align-items: center;
+				overflow: hidden;
+				position: fixed;
+				top: 15px;
+			}
+
+
+		</style>
+
+	</head>
+	<body>
+
+		<!-- Main -->
+		<div id="main">
+
+			<div class="image-container">
+				<img src="https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/lostandfound/media/image2_HC.png">
+			</div>
+
+
+			<div class="audio-container">
+				<audio src="https://raw.githubusercontent.com/ganzfeldschamber/ganzfeldschamber.github.io/main/lostandfound/media/audio2_JH.mp3" controls autoplay loop></audio>
+
+			</div>
+
+
+		</div>
+
+
+
+		<!-- Footer -->
+		<footer>
+			<div id="footer">				
+				<h3><a href="#" id="left">&#171; Lost</a></h3>
+				<h5><a href="https://ganzfeldschamber.github.io/">and</a></h5>
+				<h5><a href="#" id="right">Found &#187;</a></h5>
+			</div>
+		</footer>
+
+		<script>
+			var currentNumber = 2;
+			var maxNum = 7, minNum = 1;
+
+            var randomNumber = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+            var randomNumber2 = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+
+            if (randomNumber == currentNumber) {
+            	randomNumber--;
+            }
+            if (randomNumber2 == currentNumber) {
+            	randomNumber2++;
+            }
+           
+
+
+            const main = () => {
+                // console.log("Start");
+
+                document.getElementById('left').href = randomNumber;
+                document.getElementById('right').href = randomNumber2;
+                                
+                // console.log("End");
+            }
+
+
+            main();
+        </script>
+
+	</body>
+</html>
